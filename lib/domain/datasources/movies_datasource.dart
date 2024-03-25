@@ -2,11 +2,11 @@
 // Define los metodos que esta clase va tener para traer el dato
 
 // Es abstracto porque no quereremos crear instancias de ella
-import 'package:cinemapedia/config/domain/entities/movie.dart';
+import 'package:cinemapedia/domain/entities/movie.dart';
 
-abstract class MovieDatasource {
+abstract class MoviesDatasource {
 
-  Future<List<Movie>> getNowPlayying({int page = 1});
+  Future<List<Movie>> getNowPlaying({int page = 1});
 
 }
 
