@@ -41,26 +41,73 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final nowPlayingMovies = ref.watch(nowPlayingmoviesProvider);
     final slideShowMovies = ref.watch( moviesSlideshowProvider );
 
-    return Column(
-      children: [
+    return CustomScrollView(
+      slivers: [
 
-        const CustomAppbar(),
-
-        MoviesSlideshow(movies: slideShowMovies),
-
-        MovieHorizontalListview(
-          movies: nowPlayingMovies,
-          title: 'En Cines',
-          subTitle: 'Lunes 20',
-          loadNextPage: (){ 
-            ref.read(nowPlayingmoviesProvider.notifier).loadNextPage();
-          },
+        const SliverAppBar(
+          floating: true,
+          flexibleSpace: FlexibleSpaceBar(
+            title: CustomAppbar(),
+          ),
         ),
 
-      ],
+        SliverList(delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return Column(
+                children: [
+              
+                  // const CustomAppbar(),
+              
+                  MoviesSlideshow(movies: slideShowMovies),
+              
+                  MovieHorizontalListview(
+                    movies: nowPlayingMovies,
+                    title: 'Proximamente',
+                    subTitle: 'En este mes',
+                    loadNextPage: (){ 
+                      ref.read(nowPlayingmoviesProvider.notifier).loadNextPage();
+                    },
+                  ),
+              
+                  MovieHorizontalListview(
+                    movies: nowPlayingMovies,
+                    title: 'En Cines',
+                    subTitle: 'Lunes 20',
+                    loadNextPage: (){ 
+                      ref.read(nowPlayingmoviesProvider.notifier).loadNextPage();
+                    },
+                  ),
+              
+                  MovieHorizontalListview(
+                    movies: nowPlayingMovies,
+                    title: 'Populares',
+                    // subTitle: 'Lunes 20',
+                    loadNextPage: (){ 
+                      ref.read(nowPlayingmoviesProvider.notifier).loadNextPage();
+                    },
+                  ),
+              
+                  MovieHorizontalListview(
+                    movies: nowPlayingMovies,
+                    title: 'Mejor calificadas',
+                    subTitle: 'Desde siempre',
+                    loadNextPage: (){ 
+                      ref.read(nowPlayingmoviesProvider.notifier).loadNextPage();
+                    },
+                  ),
 
-
+                  const SizedBox(height: 15)
+              
+                ],
+              );
+            },
+            childCount: 1
+          ),
+        ),
+      ]
     );
+  
+  
   }
 
 }
