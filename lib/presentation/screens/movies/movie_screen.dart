@@ -95,26 +95,29 @@ class _MovieDetails extends StatelessWidget {
                 ),
               ),
 
-              // Generos de la pelicula
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Wrap(
-                  children: [
-                    ...movie.genreIds.map((gender) => Container(
-                      margin: const EdgeInsets.only( right: 10 ),
-                      child: Chip(
-                        label: Text(gender),
-                        shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20)),
-                      ),
-                    ))
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 100)
+              // const SizedBox(height: 100)
             ],
           ),
         ),
+
+        // Generos de la pelicula
+        Padding(
+          padding: const EdgeInsets.all(8),
+          child: Wrap(
+            children: [
+              ...movie.genreIds.map((gender) => Container(
+                margin: const EdgeInsets.only( right: 10 ),
+                child: Chip(
+                  label: Text(gender),
+                  shape: RoundedRectangleBorder( borderRadius: BorderRadius.circular(20)),
+                ),
+              ))
+            ],
+          ),
+        ),
+
+
+        const SizedBox(height: 100)
         
       ],
     );
